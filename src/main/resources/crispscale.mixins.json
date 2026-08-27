@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.rosemods.betteruiscale.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "MixinFontTexture",
+    "MixinGuiRenderer",
+    "MixinTransformsValue",
+    "MixinVideoOptionsScreen",
+    "MixinWindow"
+  ],
+  "mixins": [
+    "MixinGameOptions"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

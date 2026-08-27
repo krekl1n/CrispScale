@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "crispscale",
+  "version": "${version}",
+
+  "name": "CrispScale",
+  "description": "Extended GUI scale with smooth font rendering! Fork of Advanced UI Scaling.",
+  "authors": [
+    "Rose",
+    "Qendolin"
+  ],
+  "contact": {
+    "homepage": "https://github.com/YOUR_USERNAME/CrispScale",
+    "sources": "https://github.com/YOUR_USERNAME/CrispScale",
+    "issues": "https://github.com/YOUR_USERNAME/CrispScale/issues"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/crispscale/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": [ "net.rosemods.betteruiscale.Main" ],
+    "modmenu": [ "net.rosemods.betteruiscale.ModMenuIntegration" ]
+  },
+  "mixins": [
+    "crispscale.mixins.json"
+  ],
+  "accessWidener": "crispscale.accesswidener",
+
+  "depends": {
+    "fabricloader": ">=0.19.0",
+    "minecraft": "~26.2",
+    "java": ">=25",
+    "fabric-api": "*"
+  },
+  "recommends": {
+    "modmenu": "*"
+  },
+  "suggests": {
+    "sodium-fabric": "*"
+  }
+}
