@@ -1,11 +1,9 @@
 package net.rosemods.betteruiscale.mixin;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
 import net.minecraft.client.OptionInstance;
 import net.minecraft.network.chat.Component;
 import net.rosemods.betteruiscale.GuiScaleHandler;
-import net.rosemods.betteruiscale.MaxSuppliableIntSliderCallbacks;
 import net.rosemods.betteruiscale.ScaleFactorUtil;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
@@ -40,16 +38,10 @@ public class MixinGameOptions {
         )
     )
     private void modifyGuiScaleOption(Args args) {
-        args.set(3, new MaxSuppliableIntSliderCallbacks(0, () -> {
-            Minecraft minecraftClient = Minecraft.getInstance();
-            if (!minecraftClient.isRunning()) {
-                return 0x7FFFFFFE;
-            }
-            return minecraftClient.getWindow().calculateScale(0, minecraftClient.options.forceUnicodeFont().get());
-        }, 0x7FFFFFFE));
+        args.set(3, new OptionInstance.IntRange(0, 0x7FFFFFFE, true));
         OptionInstance.CaptionBasedToString<Integer> textGetter = MixinGameOptions::guiScaleValueToText;
         args.set(2, textGetter);
-        args.set(5, (OptionInstance.ValueUpdateListener<Integer>) value -> GuiScaleHandler.onGuiScaleChanged());
+        args.set(5, (java.util.function.Consumer<Integer>) value -> GuiScaleHandler.onGuiScaleChanged());
     }
 
     @Unique

@@ -11,7 +11,7 @@ public final class GuiScaleHandler {
 
     public static void onGuiScaleChanged() {
         Minecraft client = Minecraft.getInstance();
-        if (client.gui.screen() instanceof VideoSettingsScreen) {
+        if (client.screen instanceof VideoSettingsScreen) {
             pending = true;
         } else {
             client.resizeGui();
